@@ -38,6 +38,7 @@ let auto = false;
 let speak = false;
 
 /** Play the audio */
+fs.existsSync( './audio' ) || fs.mkdirSync( './audio' )
 const mp3 = './audio/.mp3';
 
 function play() {
@@ -50,14 +51,14 @@ function play() {
 }
 
 async function chatbot(a) {
-	if (context.length > 30) {
+	if (context.length > 20) {
 		context.shift();
 	}
 	let b = await cleverbot( a, context, 'FRANCE' );
 	return context.push( a ), b;
 }
 
-const context = [];
+let context = [];
 /** On startup */
 client.once( 'ready', async bot => {
 	console.log( 'Bot started' );
@@ -67,6 +68,7 @@ client.once( 'ready', async bot => {
 
 client.on( 'messageCreate', async message => {
 	if (message.channel.id === '1005466814576336956') {
+		try {
 		if (message.content.includes('`') || message.content === 'disable auto mode') return;
 		if (message.author.bot) {
 			if (auto) {
@@ -92,7 +94,11 @@ client.on( 'messageCreate', async message => {
 			} else if ('help' === message.content) {
 				await message.reply( '**Commands**\n`speak` (Voice output toggle)\n`auto` + starting message (Bot reply to itself from starting message)\n`repeat` + message (Bot will repeat message)' );
 				return;
-			} else if (auto) {
+			} else if ('reset' === message.content) {
+				context = [];
+				await message.reply( '`Conversation reset`' );
+				return;
+		}else if (auto) {
 				await message.reply( '`disable auto mode to speak`' );
 				return;
 			}
@@ -122,6 +128,9 @@ client.on( 'messageCreate', async message => {
 			} );
 		}
 		await message.reply( a );
+	} catch {
+		await message.reply( 'J`\'ai crashé :(' )
+		}
 	}
 } );
 
