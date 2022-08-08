@@ -10,7 +10,6 @@ import {
 } from '@discordjs/voice';
 import dot_env from 'dotenv';
 import https from 'https';
-import rimraf from 'rimraf';
 
 dot_env.config();
 
