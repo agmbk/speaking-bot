@@ -28,7 +28,7 @@ let guild;
 let vocal;
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 let auto = false;
-let speak = true;
+let speak = false;
 
 let voiceConnection;
 const audioPlayer = new AudioPlayer();
