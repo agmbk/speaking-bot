@@ -56,7 +56,7 @@ async function chatbot(a) {
 		context.shift();
 	}
 	let b = await cleverbot( a, context, 'FRANCE' );
-	return context.push( a ), b;
+	return context.push( a, b ), b;
 }
 
 let context = [];
