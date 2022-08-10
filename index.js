@@ -3,12 +3,12 @@ import cleverbot from 'cleverbot-free';
 import * as googleTTS from 'google-tts-api';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import {
-	joinVoiceChannel,
-	createAudioResource,
-	StreamType,
-	entersState,
-	VoiceConnectionStatus,
 	AudioPlayer,
+	createAudioResource,
+	entersState,
+	joinVoiceChannel,
+	StreamType,
+	VoiceConnectionStatus,
 } from '@discordjs/voice';
 import dot_env from 'dotenv';
 import { Stream } from 'stream';
@@ -52,7 +52,7 @@ async function play(stream) {
 }
 
 async function chatbot(a) {
-	if (context.length > 20) {
+	if (context.length > 100) {
 		context.shift();
 	}
 	let b = await cleverbot( a, context, 'FRANCE' );
@@ -127,7 +127,7 @@ client.on( 'messageCreate', async message => {
 			await message.reply( a );
 		} catch (error) {
 			console.error( error );
-			await message.reply( '🤖 Error 🤖' )
+			await message.reply( '🤖 Error 🤖' );
 		}
 	}
 } );
