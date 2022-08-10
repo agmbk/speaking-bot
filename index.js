@@ -52,7 +52,7 @@ async function play(stream) {
 }
 
 async function chatbot(a) {
-	if (context.length > 30) {
+	if (context.length > 15) {
 		context.shift();
 	}
 	let b = await cleverbot( a, context, 'FRANCE' );
