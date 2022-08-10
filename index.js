@@ -127,6 +127,7 @@ client.on( 'messageCreate', async message => {
 			await message.reply( a );
 		} catch (error) {
 			console.error( error );
+			await message.reply( '🤖 Error 🤖' )
 		}
 	}
 } );
