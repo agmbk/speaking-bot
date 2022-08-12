@@ -1,5 +1,5 @@
 # speaking-bot
-An ia chatting bot (sneaky and funny)
+IA chatting bot (sneaky and funny)
 
 ## Create a .env file with the following informations
 TOKEN= Your bot token\
