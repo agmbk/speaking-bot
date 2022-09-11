@@ -1,5 +1,6 @@
 # speaking-bot
 IA chatting bot (sneaky and funny)
+- [x] Challenge winner on the OURANOS server
 
 ## Create a .env file with the following informations
 TOKEN= Your bot token\
